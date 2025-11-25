@@ -2,7 +2,7 @@
 
 A production-ready environmental monitoring and fan control system for Raspberry Pi Pico, featuring intelligent override conditions, resilient sensor handling, and comprehensive logging.
 
-## 🌟 Features
+## Features
 
 ### Core Functionality
 - ✅ **Dual Temperature Sensors** - TMP117 and SHTC3 with automatic failover
