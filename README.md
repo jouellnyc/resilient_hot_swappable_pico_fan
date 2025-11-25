@@ -61,16 +61,16 @@ A production-ready environmental monitoring and fan control system for Raspberry
 ### Pin Connections (Default Config)
 ```
 Raspberry Pi Pico Pinout:
-├─ GP0  (Pin 1)  → Sensor I2C SDA (TMP117 + SHTC3)
-├─ GP1  (Pin 2)  → Sensor I2C SCL (TMP117 + SHTC3)
-├─ GP12 (Pin 16) → RTC I2C SDA (DS3231)
-├─ GP13 (Pin 17) → RTC I2C SCL (DS3231)
+├─ GP0  (Pin 1)  → Sensor I2C0 SDA (TMP117 + SHTC3)
+├─ GP1  (Pin 2)  → Sensor I2C0 SCL (TMP117 + SHTC3)
+├─ GP12 (Pin 16) → RTC I2C0 SDA (DS3231)
+├─ GP13 (Pin 17) → RTC I2C0 SCL (DS3231)
 ├─ GP16 (Pin 21) → Motor PWM (to motor driver)
 ├─ GP17 (Pin 22) → Motor IN1 (direction control)
 ├─ GP18 (Pin 24) → Motor IN2 (direction control)
 ├─ GP20 (Pin 26) → Green Button (speed up)
 ├─ GP21 (Pin 27) → Red Button (speed down)
-└─ (Separate I2C) → OLED Display (SDA/SCL - see ssd_config.py)
+└─ (I2C1) → OLED Display (SDA/SCL - (pins 14/15) see ssd_config.py)
 ```
 
 ---
