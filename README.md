@@ -208,6 +208,7 @@ project/
 │ RTC: EXT (SYNC)          │
 └──────────────────────────┘
 ```
+<img width="421" height="298" alt="image" src="https://github.com/user-attachments/assets/e43e3e87-d730-490c-9563-20d2096d5580" />
 
 ---
 
