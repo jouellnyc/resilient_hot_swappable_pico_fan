@@ -7,38 +7,38 @@ A production-ready environmental monitoring and fan control system for Raspberry
 ## Features
 
 ### Core Functionality
-- ✅ **Dual Temperature Sensors** - TMP117 and SHTC3 - hot swappaple - does not stop the running script.
-- ✅ **Humidity Monitoring** - SHTC3 integrated humidity sensor
-- ✅ **PWM Motor Control** - Variable speed fan control (20-100%)
-- ✅ **OLED Display** - Real-time status display with night mode - hot swappaple - does not stop the running script.
-- ✅ **External RTC** - DS3231 for accurate timekeeping with battery backup - hot swappaple - does not stop the running script.
-- ✅ **Dual Button Interface** - Manual control with green (increase) and red (decrease) buttons
+-  **Dual Temperature Sensors** - TMP117 and SHTC3 - hot swappaple - does not stop the running script.
+-  **Humidity Monitoring** - SHTC3 integrated humidity sensor
+-  **PWM Motor Control** - Variable speed fan control (20-100%)
+-  **OLED Display** - Real-time status display with night mode - hot swappaple - does not stop the running script.
+-  **External RTC** - DS3231 for accurate timekeeping with battery backup - hot swappaple - does not stop the running script.
+-  **Dual Button Interface** - Manual control with green (increase) and red (decrease) buttons
 
 ### Smart Control Logic
-- ✅ **Priority Hierarchy** - Manual → Temperature Override → Humidity Override → Business Hours → Weekend
-- ✅ **Environmental Overrides** - Temperature and humidity thresholds override time-based restrictions
-- ✅ **Business Hours Scheduling** - Configurable days of week and time windows
-- ✅ **Night Mode** - Auto-dim OLED display during configured hours
+-  **Priority Hierarchy** - Manual → Temperature Override → Humidity Override → Business Hours → Weekend
+-  **Environmental Overrides** - Temperature and humidity thresholds override time-based restrictions
+-  **Business Hours Scheduling** - Configurable days of week and time windows
+-  **Night Mode** - Auto-dim OLED display during configured hours
 
 ### Resilience & Reliability
-- ✅ **Sensor Reading Cache** - Maintains last valid readings for 30 seconds during brief disconnections
-- ✅ **Automatic Reconnection** - Sensors and display auto-recover from failures
-- ✅ **RTC Drift Correction** - Hourly sync with external DS3231 when available
-- ✅ **Fallback Operation** - Internal RTC runs unsynced if external RTC fails
-- ✅ **Memory-Safe Log Pruning** - Activity log automatically maintained under 100KB
+-  **Sensor Reading Cache** - Maintains last valid readings for 30 seconds during brief disconnections
+-  **Automatic Reconnection** - Sensors and display auto-recover from failures
+-  **RTC Drift Correction** - Hourly sync with external DS3231 when available
+-  **Fallback Operation** - Internal RTC runs unsynced if external RTC fails
+-  **Memory-Safe Log Pruning** - Activity log automatically maintained under 100KB
 
 ### Logging & Monitoring
-- ✅ **CSV Data Logging** - Temperature, humidity, and status at configurable intervals
-- ✅ **Activity Log** - Timestamped events including state transitions, overrides, errors
-- ✅ **Comprehensive Status Messages** - Business hours transitions, sensor disconnects/reconnects, override events
-- ✅ **Real-time OLED Display** - Date, time, temperatures, humidity, fan speed, operational status
+-  **CSV Data Logging** - Temperature, humidity, and status at configurable intervals
+-  **Activity Log** - Timestamped events including state transitions, overrides, errors
+-  **Comprehensive Status Messages** - Business hours transitions, sensor disconnects/reconnects, override events
+-  **Real-time OLED Display** - Date, time, temperatures, humidity, fan speed, operational status
 
 ### Advanced Features
-- ✅ **Configurable Timing Intervals** - Main loop, sensor reads, logging, RTC sync all adjustable
-- ✅ **Dual-Speed Architecture** - Fast button polling (10 Hz) + efficient sensor reads (1 Hz)
-- ✅ **Minute-Precision Scheduling** - Business hours and night mode down to the minute
-- ✅ **Speed Step Scaling** - Variable speed increments based on current fan speed
-- ✅ **Override Minimum Enforcement** - Prevents manual reduction below environmental override thresholds
+-  **Configurable Timing Intervals** - Main loop, sensor reads, logging, RTC sync all adjustable
+-  **Dual-Speed Architecture** - Fast button polling (10 Hz) + efficient sensor reads (1 Hz)
+-  **Minute-Precision Scheduling** - Business hours and night mode down to the minute
+-  **Speed Step Scaling** - Variable speed increments based on current fan speed
+-  **Override Minimum Enforcement** - Prevents manual reduction below environmental override thresholds
 
 ---
 
