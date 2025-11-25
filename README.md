@@ -40,7 +40,7 @@ A production-ready environmental monitoring and fan control system for Raspberry
 
 ---
 
-## 🛠️ Hardware Components
+## Hardware Components
 
 ### Required Components
 
@@ -73,7 +73,7 @@ Raspberry Pi Pico Pinout:
 
 ---
 
-## 📋 Important Considerations
+## Important Considerations
 
 ### Before You Build
 
@@ -173,7 +173,7 @@ project/
 
 ---
 
-## 🚀 Quick Start
+## Quick Start
 
 1. **Install MicroPython** on Raspberry Pi Pico
 2. **Wire hardware** according to pin configuration above
@@ -184,7 +184,7 @@ project/
 
 ---
 
-## 📊 System Output Examples
+## System Output Examples
 
 ### Activity Log
 ```
@@ -211,11 +211,11 @@ project/
 
 ---
 
-## 📄 License
+## License
 
 This project is provided as-is for educational and hobbyist use.
 
-## 🤝 Contributing
+## Contributing
 
 Feel free to fork, modify, and improve! Suggestions welcome.
 
