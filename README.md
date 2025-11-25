@@ -5,11 +5,11 @@ A production-ready environmental monitoring and fan control system for Raspberry
 ## Features
 
 ### Core Functionality
-- ✅ **Dual Temperature Sensors** - TMP117 and SHTC3 with automatic failover
+- ✅ **Dual Temperature Sensors** - TMP117 and SHTC3 - hot swappaple - does not stop the running script.
 - ✅ **Humidity Monitoring** - SHTC3 integrated humidity sensor
 - ✅ **PWM Motor Control** - Variable speed fan control (20-100%)
-- ✅ **OLED Display** - Real-time status display with night mode
-- ✅ **External RTC** - DS3231 for accurate timekeeping with battery backup
+- ✅ **OLED Display** - Real-time status display with night mode - hot swappaple - does not stop the running script.
+- ✅ **External RTC** - DS3231 for accurate timekeeping with battery backup - hot swappaple - does not stop the running script.
 - ✅ **Dual Button Interface** - Manual control with green (increase) and red (decrease) buttons
 
 ### Smart Control Logic
