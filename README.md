@@ -168,62 +168,61 @@ project/
 ❌ **Don't**: Set override thresholds lower than normal operating temps  
 
 ✅ **Do**: Test motor driver separately before integrating  
-    ✅ **Do**: Calibrate sensor readings against known reference  
-    ✅ **Do**: Monitor activity log during first week of operation  
-    ✅ **Do**: Set realistic business hours for your environment  
+✅ **Do**: Calibrate sensor readings against known reference  
+✅ **Do**: Monitor activity log during first week of operation  
+✅ **Do**: Set realistic business hours for your environment  
 
-    ---
+ ---
+## Quick Start
 
-    ## Quick Start
+1. **Install MicroPython** on Raspberry Pi Pico
+2. **Wire hardware** according to pin configuration above
+3. **Upload all Python files** to Pico root directory
+4. **Edit config.py** to match your environment and preferences
+5. **Set DS3231 time** using external tool or manual script
+6. **Run**: `import rtc_logger; rtc_logger.main()`
 
-    1. **Install MicroPython** on Raspberry Pi Pico
-    2. **Wire hardware** according to pin configuration above
-    3. **Upload all Python files** to Pico root directory
-    4. **Edit config.py** to match your environment and preferences
-    5. **Set DS3231 time** using external tool or manual script
-    6. **Run**: `import rtc_logger; rtc_logger.main()`
+---
 
-    ---
+## System Output Examples
 
-    ## System Output Examples
+### Activity Log
+```
+[2025-11-22 08:00:00] [BUSINESS HOURS] Started at 08:00 (MO). Operating until 17:22
+[2025-11-22 14:35:12] [OVERRIDE] Temperature (82.3F) detected. Forcing min speed 90%.
+[2025-11-22 14:35:12] [RUN] Motor re-enabled: HIGH_TEMP_OVERRIDE_82.3
+[2025-11-22 15:20:45] [AUTO] Override ended. Resuming normal operation (ALLOWED).
+[2025-11-22 17:22:00] [AFTER HOURS] Business day ended at 17:22. Resuming at 08:00
+```
 
-    ### Activity Log
-    ```
-    [2025-11-22 08:00:00] [BUSINESS HOURS] Started at 08:00 (MO). Operating until 17:22
-    [2025-11-22 14:35:12] [OVERRIDE] Temperature (82.3F) detected. Forcing min speed 90%.
-    [2025-11-22 14:35:12] [RUN] Motor re-enabled: HIGH_TEMP_OVERRIDE_82.3
-    [2025-11-22 15:20:45] [AUTO] Override ended. Resuming normal operation (ALLOWED).
-    [2025-11-22 17:22:00] [AFTER HOURS] Business day ended at 17:22. Resuming at 08:00
-    ```
+### OLED Display
+```
+┌──────────────────────────┐
+│ 11/22 FR  3:45PM         │
+├──────────────────────────┤
+│ TMP: 78.5F               │
+│ SHT: 79.1F               │
+│ HUM: 42.3%               │
+│ FAN: 85%                 │
+│ RUN: Auto                │
+│ RTC: EXT (SYNC)          │
+└──────────────────────────┘
+```
+<img width="421" height="298" alt="image" src="https://github.com/user-attachments/assets/e43e3e87-d730-490c-9563-20d2096d5580" />
 
-    ### OLED Display
-    ```
-    ┌──────────────────────────┐
-    │ 11/22 FR  3:45PM         │
-    ├──────────────────────────┤
-    │ TMP: 78.5F               │
-    │ SHT: 79.1F               │
-    │ HUM: 42.3%               │
-    │ FAN: 85%                 │
-    │ RUN: Auto                │
-    │ RTC: EXT (SYNC)          │
-    └──────────────────────────┘
-    ```
-    <img width="421" height="298" alt="image" src="https://github.com/user-attachments/assets/e43e3e87-d730-490c-9563-20d2096d5580" />
+---
 
-    ---
+## License
 
-    ## License
+This project is provided as-is for educational and hobbyist use.
 
-    This project is provided as-is for educational and hobbyist use.
+## Contributing
 
-    ## Contributing
+Feel free to fork, modify, and improve! Suggestions welcome.
 
-    Feel free to fork, modify, and improve! Suggestions welcome.
+---
 
-    ---
-
-    **Version**: V9.9 (Robust Config + Optimized Sensor Reads)  
-    **Last Updated**: November 2025
+**Version**: V9.9 (Robust Config + Optimized Sensor Reads)  
+**Last Updated**: November 2025
 
 
