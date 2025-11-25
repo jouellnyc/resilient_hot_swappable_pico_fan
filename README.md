@@ -179,7 +179,7 @@ project/
 2. **Wire hardware** according to pin configuration above
 3. **Upload all Python files** to Pico root directory
 4. **Edit config.py** to match your environment and preferences
-5. **Set DS3231 time** using external tool or manual script
+5. **Set DS3231 time** using external tool or rtc_set.py
 6. **Run**: `import rtc_logger; rtc_logger.main()`
 
 ---
