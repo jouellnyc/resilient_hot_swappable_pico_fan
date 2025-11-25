@@ -2,6 +2,8 @@
 
 A production-ready environmental monitoring and fan control system for Raspberry Pi Pico, featuring intelligent override conditions, resilient sensor handling, and comprehensive logging.
 
+<img width="1287" height="673" alt="image" src="https://github.com/user-attachments/assets/75ad0b0d-68cd-40d7-864c-d65cafc4a466" />
+
 ## Features
 
 ### Core Functionality
