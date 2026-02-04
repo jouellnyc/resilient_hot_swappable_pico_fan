@@ -158,26 +158,30 @@ class ResilientLogger:
         # Run initial memory-safe log prune after all startup messages are logged
         self._prune_activity_log(self.activity_log_file, force=True)
 
+    
+    # Modified _prune_activity_log method - replace the existing one
+
     def _prune_activity_log(self, filename, force=False):
         """
-        Memory-safe log pruning: checks size and truncates by line count if necessary.
-        Uses a two-pass file operation to avoid loading the entire file into memory (OOM fix).
+        Memory-safe log pruning with aggressive limits for small storage.
+        Keeps only the most recent 200 lines to prevent disk overflow on 1MB systems.
         """
-        MAX_LINES_TO_KEEP = 1000 # Keep the 1000 most recent lines
+        MAX_LINES_TO_KEEP = 200  # Reduced from 1000 to 200 for tighter storage
+        MAX_LOG_SIZE = 50 * 1024  # 50KB limit (reduced from 100KB)
         
         # Periodic check to limit overhead unless forced (e.g., at startup)
         if not force and time.time() - self.last_prune_time < self.prune_interval:
             return
 
-        gc.collect() # Always run garbage collection before a potentially large file operation
+        gc.collect()
         
         try:
             stat = os.stat(filename)
             size = stat[6] 
             
-            if size > MAX_ACTIVITY_LOG_SIZE_BYTES:
+            if size > MAX_LOG_SIZE:
                 
-                # --- Pass 1: Count lines (Line-by-line read is memory-safe) ---
+                # --- Pass 1: Count lines ---
                 line_count = 0
                 try:
                     with open(filename, 'r') as f:
@@ -206,16 +210,65 @@ class ResilientLogger:
                     os.remove(filename)
                     os.rename(temp_filename, filename)
                     
-                    # Log the action (will be visible on the next _log_activity call)
-                    prune_message = f"[PRUNE] Activity log exceeded {MAX_ACTIVITY_LOG_SIZE_BYTES/1024:.0f}KB. Removed {lines_removed} oldest lines (Keeping last {MAX_LINES_TO_KEEP})."
-                    self._log_activity(prune_message, timestamp=True)
+                    # Just print, don't re-log (prevents recursive logging)
+                    print(f"[PRUNE] Removed {lines_removed} old lines (Kept {MAX_LINES_TO_KEEP})")
                     
-                self.last_prune_time = time.time() # Update prune time only if it ran successfully
+                self.last_prune_time = time.time()
 
         except Exception as e:
-            # Catch file stat or rename errors
             print(f"[PRUNE_ERROR] Failed to prune {filename}: {e}")
 
+
+    # Modified _log_activity method - replace the existing one
+
+    def _log_activity(self, message, timestamp=True):
+        """
+        Logs only important events to file to conserve disk space.
+        Prints everything to console for debugging.
+        """
+        # ALWAYS print to console
+        if timestamp:
+            print(f"[{self.get_timestamp()}] {message}") 
+        else:
+            print(message)
+
+        # Define what to actually WRITE to file (filter out verbose messages)
+        skip_file_write = False
+        
+        # Skip non-timestamped messages (headers, blank lines, status displays)
+        if not timestamp:
+            skip_file_write = True
+        
+        # Skip routine status messages
+        skip_patterns = [
+            "Working sensors:",
+            "Fan Speed:",
+            "Manual Mode:",
+            "Time source:",
+            "Current time",
+            "READY!"
+        ]
+        
+        for pattern in skip_patterns:
+            if pattern in message:
+                skip_file_write = True
+                break
+        
+        # Only write important events to file
+        if not skip_file_write:
+            try:
+                with open(self.activity_log_file, 'a') as f:
+                    f.write(f"[{self.get_timestamp()}] {message}\n")
+                
+                # Prune more frequently
+                self.log_write_count += 1
+                if self.log_write_count % 5 == 0:  # Check every 5 writes (was 10)
+                    self._prune_activity_log(self.activity_log_file)
+                
+            except Exception as e:
+                print(f"[ACTIVITY_LOG_ERROR] {e}")
+                
+            
     def _init_tmp117(self):
         try:
             self.tmp117 = TMP117(self.i2c_sensors, address=0x48)
